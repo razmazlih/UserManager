@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from ..auth import authenticate_token
-from ..models.user_model import UserModel
+from app.auth import authenticate_token
+from app.models.user_model import UserModel
 
 user_routes = Blueprint('user_routes', __name__)
 
