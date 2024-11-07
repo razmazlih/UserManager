@@ -38,27 +38,43 @@ This is a user management REST API service built with Flask and Firebase Firesto
     pip install -r requirements.txt
     ```
 
-4. Set up Firebase credentials:
-    - Download the `credentials.json` file from the Firebase Console (in the Service Accounts section).
-    - Place `credentials.json` in the root of the project folder.
-    - Set the path to `credentials.json` in the `.env` file:
+4. Set up Firebase credentials as a single environment variable:
+   - Open `credentials.json` and copy the entire contents.
+   - Store it in an environment variable named `FIREBASE_CREDENTIALS_JSON` in your `.env` file:
 
       ```text
-      FIREBASE_CREDENTIALS_PATH="credentials.json"
+      FIREBASE_CREDENTIALS_JSON='{"type": "...", "project_id": "...", "private_key_id": "...", "private_key": "-----BEGIN PRIVATE KEY-----\\n...\\n-----END PRIVATE KEY-----\\n", ...}'
       ```
 
-5. Configure environment variables in a `.env` file:
+   - Ensure the private key includes `\\n` instead of actual newlines to store it properly in a single line within `.env`.
+
+5. Configure additional environment variables in `.env`:
 
     ```text
     ADMIN_TOKEN="your_admin_token"
-    FIREBASE_CREDENTIALS_PATH="credentials.json"
     CORS_ORIGINS="*"  # Allowed origins, e.g., "https://example.com"
     CORS_SUPPORTS_CREDENTIALS=True
     ```
 
-## Running the Service
+## Firebase Initialization
 
-To start the Flask development server, run:
+In `app/utils/firebase.py`, Firebase is initialized by loading the JSON credentials directly from the `FIREBASE_CREDENTIALS_JSON` environment variable. The `private_key` is reformatted to include actual newlines before Firebase is initialized.
 
-```bash
-python run.py
+The code snippet used to initialize Firebase is as follows:
+
+```python
+import firebase_admin
+from firebase_admin import credentials
+import os
+import json
+
+def initialize_firebase():
+    # Load JSON credentials from environment variable
+    cred_data = json.loads(os.getenv('FIREBASE_CREDENTIALS_JSON'))
+
+    # Replace \\n with actual newlines for the private key
+    cred_data["private_key"] = cred_data["private_key"].replace('\\n', '\n')
+
+    if not firebase_admin._apps:
+        cred = credentials.Certificate(cred_data)
+        firebase_admin.initialize_app(cred)
