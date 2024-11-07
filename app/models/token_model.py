@@ -1,7 +1,8 @@
 from datetime import datetime
 from firebase_admin import firestore
+import pytz
 
-# פונקציה שמחזירה את חיבור Firestore בעת הצורך
+
 def get_db():
     return firestore.client()
 
@@ -9,17 +10,19 @@ class TokenModel:
     @staticmethod
     def add_token(app_id, token):
         db = get_db()
+        israel_tz = pytz.timezone("Asia/Jerusalem")
         db.collection("tokens").document(app_id).set({
             "token": token,
-            "updated_at": datetime.utcnow()
+            "created_at": datetime.now(israel_tz)
         })
 
     @staticmethod
     def update_token(app_id, token):
         db = get_db()
+        israel_tz = pytz.timezone("Asia/Jerusalem")
         db.collection("tokens").document(app_id).update({
             "token": token,
-            "updated_at": datetime.utcnow()
+            "updated_at": datetime.now(israel_tz)
         })
 
     @staticmethod

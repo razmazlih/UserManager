@@ -1,5 +1,5 @@
 from app.utils.firebase import initialize_firebase
-initialize_firebase()  # מבצע אתחול Firebase לפני יצירת האפליקציה
+initialize_firebase()
 
 from app import create_app
 
