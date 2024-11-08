@@ -12,6 +12,6 @@ def load_app_tokens():
 def authenticate_token(token):
     valid_app_tokens = load_app_tokens()
     for app_id, app_token in valid_app_tokens.items():
-        if token == app_token:
+        if token == f'Bearer {app_token}':
             return app_id
     return None
