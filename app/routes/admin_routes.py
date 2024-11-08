@@ -4,6 +4,14 @@ from app.models.token_model import TokenModel
 
 admin_routes = Blueprint('admin_routes', __name__)
 
+@admin_routes.route('/admin/token', methods=['GET'])
+def get_all_tokens():
+    if not authenticate_admin(request.headers.get("Admin-Token")):
+        return jsonify({"error": "Unauthorized"}), 401
+
+    tokens = TokenModel.get_tokens()
+    return jsonify(tokens), 200
+
 @admin_routes.route('/admin/token', methods=['POST'])
 def add_token():
     if not authenticate_admin(request.headers.get("Admin-Token")):
