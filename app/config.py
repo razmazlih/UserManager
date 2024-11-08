@@ -12,3 +12,5 @@ class Config:
 
     DEBUG = os.getenv('DEBUG') == 'True'
     PORT = int(os.getenv('PORT')) or 5000
+
+    ADMIN_TOKEN = os.getenv("ADMIN_TOKEN")

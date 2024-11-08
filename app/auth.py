@@ -1,10 +1,8 @@
 from app.models.token_model import TokenModel
-import os
-
-ADMIN_TOKEN = os.getenv("ADMIN_TOKEN")
+from app.config import Config
 
 def authenticate_admin(token):
-    return token == ADMIN_TOKEN
+    return token == Config.ADMIN_TOKEN
 
 def load_app_tokens():
     return TokenModel.get_tokens()
