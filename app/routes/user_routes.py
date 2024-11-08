@@ -12,7 +12,7 @@ def create_user():
         return jsonify({"error": "Unauthorized"}), 401
 
     user_data = request.get_json()
-    user_id = user_data.get("phone")
+    user_id = user_data.get("phone_number")
     UserModel.create_user(user_id, app_id, user_data)
     return jsonify({"message": "User created successfully"}), 201
 
