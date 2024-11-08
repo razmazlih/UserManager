@@ -3,3 +3,4 @@ venv
 routes.txt
 __pycache__
 credentials.json
+.idea

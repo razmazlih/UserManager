@@ -16,7 +16,15 @@ class UserModel:
         db = get_db()
         user_ref = db.collection('users').document(user_id)
         app_data = user_ref.collection('app_data').document(app_id).get()
-        return app_data.to_dict() if app_data.exists else None
+
+        if not app_data.exists:
+            return None
+
+        data = app_data.to_dict()
+        if 'password' in data:
+            del data['password']
+
+        return data
 
     @staticmethod
     def update_user_data(user_id, app_id, user_data):
