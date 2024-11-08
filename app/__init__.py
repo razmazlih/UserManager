@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
-from .config import Config
-from .utils.firebase import initialize_firebase
+from app.config import Config
+from app.utils.firebase import initialize_firebase
 from app.routes import admin_routes, user_routes, app_routes
 
 def create_app():
