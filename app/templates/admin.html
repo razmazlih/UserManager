@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+        h1 { color: #333; }
+        .section { margin-bottom: 30px; }
+        .route { padding: 10px; border: 1px solid #ddd; border-radius: 5px; background-color: #fff; margin-bottom: 10px; }
+        .route-title { font-weight: bold; color: #444; }
+        .methods { color: #007BFF; font-weight: bold; }
+        .description { color: #555; margin-top: 5px; font-style: italic; }
+    </style>
+</head>
+<body>
+    <h1>Admin API Documentation</h1>
+    
+    <div class='section'><h2>Admin Routes</h2>
+        <div class="route">
+            <div class="route-title">Route: /admin/token</div>
+            <div class="methods">Methods: POST</div>
+            <div class="description">מוסיף טוקן חדש למערכת עבור אפליקציה מסוימת</div>
+        </div>
+        <div class="route">
+            <div class="route-title">Route: /admin/token/&lt;app_id&gt;</div>
+            <div class="methods">Methods: PUT</div>
+            <div class="description">מעודכן טוקן קיים לפי מזהה אפליקציה</div>
+        </div>
+        <div class="route">
+            <div class="route-title">Route: /admin/token/&lt;app_id&gt;</div>
+            <div class="methods">Methods: DELETE</div>
+            <div class="description">מוחק טוקן קיים לפי מזהה אפליקציה</div>
+        </div>
+    </div>
+
+    <div class='section'><h2>User Routes</h2>
+        <div class="route">
+            <div class="route-title">Route: /user</div>
+            <div class="methods">Methods: POST</div>
+            <div class="description">יוצר משתמש חדש במערכת</div>
+        </div>
+        <div class="route">
+            <div class="route-title">Route: /user/&lt;user_id&gt;</div>
+            <div class="methods">Methods: GET</div>
+            <div class="description">מחזיר פרטי משתמש לפי מזהה</div>
+        </div>
+        <div class="route">
+            <div class="route-title">Route: /user/&lt;user_id&gt;</div>
+            <div class="methods">Methods: PUT</div>
+            <div class="description">מעודכן פרטי משתמש קיים לפי מזהה</div>
+        </div>
+        <div class="route">
+            <div class="route-title">Route: /user/&lt;user_id&gt;</div>
+            <div class="methods">Methods: DELETE</div>
+            <div class="description">מוחק משתמש קיים לפי מזהה</div>
+        </div>
+    </div>
+</body>
+</html>

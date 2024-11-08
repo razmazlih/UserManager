@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Documentation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f9f9f9; }
+        h1 { color: #333; }
+        .section { margin-bottom: 30px; }
+        .route { padding: 15px; border: 1px solid #ddd; border-radius: 5px; background-color: #fff; margin-bottom: 15px; }
+        .route-title { font-weight: bold; color: #444; font-size: 1.2em; }
+        .methods { color: #007BFF; font-weight: bold; font-size: 1.1em; margin-top: 5px; }
+        .description, .auth, .data { color: #555; margin-top: 10px; }
+        .auth, .data { font-weight: bold; }
+        .data-content { font-weight: normal; font-style: italic; color: #333; }
+    </style>
+</head>
+<body>
+    <h1>API Documentation</h1>
+    
+    <div class='section'>
+        <h2>User Routes</h2>
+        
+        <!-- POST /user -->
+        <div class="route">
+            <div class="route-title">Route: <span style="color: #333;">/user</span></div>
+            <div class="methods">Method: POST</div>
+            <div class="description">Description: Creates a new user in the system</div>
+            <div class="auth">Authentication: Requires <span class="data-content">Authorization token</span> in the request header</div>
+            <div class="data">Required Data (JSON):
+                <div class="data-content">
+                    {"phone": "unique phone number", "name": "user name", "email": "email address"}
+                </div>
+            </div>
+        </div>
+
+        <!-- GET /user/<user_id> -->
+        <div class="route">
+            <div class="route-title">Route: <span style="color: #333;">/user/&lt;user_id&gt;</span></div>
+            <div class="methods">Method: GET</div>
+            <div class="description">Description: Retrieves user details by ID</div>
+            <div class="auth">Authentication: Requires <span class="data-content">Authorization token</span> in the request header</div>
+            <div class="data">Required Data:
+                <div class="data-content">
+                    user_id should be replaced with the user's phone number
+                </div>
+            </div>
+        </div>
+
+        <!-- PUT /user/<user_id> -->
+        <div class="route">
+            <div class="route-title">Route: <span style="color: #333;">/user/&lt;user_id&gt;</span></div>
+            <div class="methods">Method: PUT</div>
+            <div class="description">Description: Updates an existing user's details by ID</div>
+            <div class="auth">Authentication: Requires <span class="data-content">Authorization token</span> in the request header</div>
+            <div class="data">Required Data (JSON):
+                <div class="data-content">
+                    {"phone": "unique phone number", "name": "new name", "email": "updated email address"}
+                </div>
+            </div>
+        </div>
+
+        <!-- DELETE /user/<user_id> -->
+        <div class="route">
+            <div class="route-title">Route: <span style="color: #333;">/user/&lt;user_id&gt;</span></div>
+            <div class="methods">Method: DELETE</div>
+            <div class="description">Description: Deletes an existing user by ID</div>
+            <div class="auth">Authentication: Requires <span class="data-content">Authorization token</span> in the request header</div>
+            <div class="data">Required Data:
+                <div class="data-content">
+                    user_id should be replaced with the user's phone number
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
