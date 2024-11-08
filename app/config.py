@@ -9,3 +9,6 @@ class Config:
     
     CORS_ORIGINS = os.getenv('CORS_ORIGINS', '*')
     CORS_SUPPORTS_CREDENTIALS = bool(os.getenv('CORS_SUPPORTS_CREDENTIALS', True))
+
+    DEBUG = os.getenv('DEBUG') == 'True'
+    PORT = int(os.getenv('PORT')) or 5000

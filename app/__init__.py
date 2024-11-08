@@ -12,7 +12,7 @@ def create_app():
     initialize_firebase()
 
     cors_origins = Config.CORS_ORIGINS.split(',') if Config.CORS_ORIGINS != '*' else '*'
-    CORS(app, resources={r"/*": {"origins": cors_origins}}, supports_credentials=Config.CORS_SUPPORTS_CREDENTIALS)
+    CORS(app, resources={r"/*": {"origins": cors_origins}})
 
     app.register_blueprint(user_routes)
     app.register_blueprint(admin_routes)
